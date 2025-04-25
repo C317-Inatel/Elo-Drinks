@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "https://c317-inatel.github.io/Elo-Drinks/",
+  base: "/Elo-Drinks/",
   server: {
     host: "::",
     port: 8080,
