@@ -20,8 +20,8 @@ const DrinksSection = () => {
         <Tabs defaultValue="especiais" className="w-full">
           <TabsList className="w-full justify-center mb-8 bg-elo-cream/30">
             <TabsTrigger value="especiais" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Drinks Especiais</TabsTrigger>
-            <TabsTrigger value="caipirinhas" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Caipirinhas</TabsTrigger>
-            <TabsTrigger value="naoalcoolicos" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Não Alcoólicos</TabsTrigger>
+            <TabsTrigger value="classicos" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Clássicos</TabsTrigger>
+            <TabsTrigger value="autorais" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Autorais</TabsTrigger>
           </TabsList>
           
           <TabsContent value="especiais">
@@ -30,32 +30,32 @@ const DrinksSection = () => {
                 {
                   name: "Moscow Mule",
                   description: "Vodka, xarope de gengibre, limão tahiti e espuma de gengibre",
-                  image: "/lovable-uploads/a8486d4f-863b-4abd-aeb1-30b25189cf27.png"
+                  image: "/lovable-uploads/moscow.webp"
                 },
                 {
-                  name: "Basil Smash",
+                  name: "Aerol Spritz",
                   description: "Gin, suco de limão siciliano, syrup de manjericão e folhas de manjericão",
-                  image: "/lovable-uploads/e8ac5e6a-dff0-4575-9c9c-cbbd21d4a5a0.png"
+                  image: "/lovable-uploads/aerol.webp"
                 },
                 {
                   name: "Penicillin",
                   description: "Whisky, suco de limão siciliano, xarope de gengibre e limão desidratado",
-                  image: "/lovable-uploads/513d86bb-9bed-41a7-a429-103e89ace01b.png"
+                  image: "/lovable-uploads/penin.webp"
                 },
                 {
                   name: "Fitzgerald",
                   description: "Gin, syrup de açúcar, suco de limão siciliano e angostura bitters",
-                  image: "/lovable-uploads/6c30b204-f7a0-40f4-9b2a-55fb250fbd6b.png"
+                  image: "/lovable-uploads/fitz.webp"
                 },
                 {
-                  name: "Classic Tonic",
+                  name: "Negroni",
                   description: "Gin, limão siciliano, zimbro e tônica",
-                  image: "/lovable-uploads/7197d102-c531-4f88-a574-34dca0f2688d.png"
+                  image: "/lovable-uploads/negroni.webp"
                 },
                 {
-                  name: "Whisky Sour",
+                  name: "Toranja Tonic",
                   description: "Whisky, limão siciliano, clara de ovo e angostura",
-                  image: "/lovable-uploads/e8ac5e6a-dff0-4575-9c9c-cbbd21d4a5a0.png"
+                  image: "/lovable-uploads/toranja.webp"
                 }
               ].map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
@@ -75,23 +75,28 @@ const DrinksSection = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="caipirinhas">
+          <TabsContent value="classicos">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Abacaxi com Hortelã",
+                  name: "Expresso Martini",
                   description: "Vodka, abacaxi fresco, hortelã e açúcar",
-                  image: "/lovable-uploads/513d86bb-9bed-41a7-a429-103e89ace01b.png"
+                  image: "/lovable-uploads/martini.webp"
                 },
                 {
-                  name: "Uva com Manjericão",
+                  name: "Mojito",
                   description: "Vodka ou cachaça, uvas frescas, manjericão e açúcar",
-                  image: "/lovable-uploads/6c30b204-f7a0-40f4-9b2a-55fb250fbd6b.png"
+                  image: "/lovable-uploads/mojito.webp"
                 },
                 {
-                  name: "Kiwi com Limão",
+                  name: "Aerol Spritz",
                   description: "Vodka ou cachaça, kiwi, limão e açúcar",
-                  image: "/lovable-uploads/e8ac5e6a-dff0-4575-9c9c-cbbd21d4a5a0.png"
+                  image: "/lovable-uploads/aerol.webp"
+                },
+                {
+                  name: "Negroni",
+                  description: "Vodka ou cachaça, kiwi, limão e açúcar",
+                  image: "/lovable-uploads/negroni.webp"
                 }
               ].map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
@@ -111,33 +116,18 @@ const DrinksSection = () => {
             </div>
           </TabsContent>
           
-          <TabsContent value="naoalcoolicos">
+          <TabsContent value="autorais">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Cirque Blue",
+                  name: "Vintage Pink",
                   description: "Curaçau blue, suco de blueberry, amora, mix de limão, água com gás e algodão doce",
-                  image: "/lovable-uploads/a8486d4f-863b-4abd-aeb1-30b25189cf27.png"
+                  image: "/lovable-uploads/vintage.webp"
                 },
                 {
-                  name: "Pink Lemonade",
+                  name: "Elo Tonic",
                   description: "Mix de limão, água com gás e syrup de romã servidos em lâmpadas brilhantes",
-                  image: "/lovable-uploads/513d86bb-9bed-41a7-a429-103e89ace01b.png"
-                },
-                {
-                  name: "Pina Descolada",
-                  description: "Suco de abacaxi, leite de coco, leite condensado e granulado colorido",
-                  image: "/lovable-uploads/6c30b204-f7a0-40f4-9b2a-55fb250fbd6b.png"
-                },
-                {
-                  name: "Lichia Paradise",
-                  description: "Água com gás, xarope simples, lichia, suco de limão e hortelã",
-                  image: "/lovable-uploads/7197d102-c531-4f88-a574-34dca0f2688d.png"
-                },
-                {
-                  name: "Sonho Brilhante",
-                  description: "Espumante sem álcool, algodão doce rosa mágico",
-                  image: "/lovable-uploads/e8ac5e6a-dff0-4575-9c9c-cbbd21d4a5a0.png"
+                  image: "/lovable-uploads/elo-tonic.webp"
                 }
               ].map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">

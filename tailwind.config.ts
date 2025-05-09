@@ -106,10 +106,11 @@ export default {
 				'wave': 'wave 2s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'wave-pattern': "url('/lovable-uploads/3b2e35b2-3e1d-4eb7-a33d-a0bc3debdda8.png')",
+				'wave-pattern': "url('/lovable-uploads/banner.jpg')",
 				'hero-pattern': "linear-gradient(to bottom, rgba(16, 24, 32, 0.7), rgba(16, 24, 32, 0.5)), url('/lovable-uploads/7ddf1570-539f-4787-8fec-184ff0880126.png')"
 			},
 		}
 	},
+	// eslint-disable-next-line @typescript-eslint/no-require-imports
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;

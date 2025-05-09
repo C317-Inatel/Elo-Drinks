@@ -13,12 +13,12 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   
   const galleryImages: GalleryImage[] = [
-    { url: "/lovable-uploads/7ddf1570-539f-4787-8fec-184ff0880126.png", alt: "Bar montado com bartenders" },
-    { url: "/lovable-uploads/a8486d4f-863b-4abd-aeb1-30b25189cf27.png", alt: "Drink decorado" },
-    { url: "/lovable-uploads/513d86bb-9bed-41a7-a429-103e89ace01b.png", alt: "Coquetel pink" },
-    { url: "/lovable-uploads/6c30b204-f7a0-40f4-9b2a-55fb250fbd6b.png", alt: "Drink com frutas" },
-    { url: "/lovable-uploads/7197d102-c531-4f88-a574-34dca0f2688d.png", alt: "Bartender preparando drink" },
-    { url: "/lovable-uploads/e8ac5e6a-dff0-4575-9c9c-cbbd21d4a5a0.png", alt: "Coquetel especial" },
+    { url: "/lovable-uploads/bar.webp", alt: "Bar montado com bartenders" },
+    { url: "/lovable-uploads/aniversario.webp", alt: "Aniversario" },
+    { url: "/lovable-uploads/casamento.webp", alt: "Casamento" },
+    { url: "/lovable-uploads/corp.webp", alt: "Corporativo" },
+    { url: "/lovable-uploads/clinic.webp", alt: "Clínica de Drinks" },
+    { url: "/lovable-uploads/evento-judeu.webp", alt: "Evento Judaico" },
   ];
 
   const openLightbox = (image: GalleryImage) => {

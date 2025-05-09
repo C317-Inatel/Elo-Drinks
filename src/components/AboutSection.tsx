@@ -10,7 +10,7 @@ const AboutSection = () => {
           <div className="relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="/lovable-uploads/7197d102-c531-4f88-a574-34dca0f2688d.png" 
+                src="/lovable-uploads/ceo.webp" 
                 alt="Equipe Elo Drinks" 
                 className="w-full h-auto object-cover"
               />
@@ -58,11 +58,6 @@ const AboutSection = () => {
               </li>
             </ul>
             
-            <Link to="/sobre">
-              <Button className="bg-elo-terracotta hover:bg-elo-terracotta/90 text-white px-6 py-3">
-                Conheça Nossa História
-              </Button>
-            </Link>
           </div>
         </div>
       </div>
