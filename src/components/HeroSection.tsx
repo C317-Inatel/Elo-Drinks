@@ -10,7 +10,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen bg-hero-pattern bg-[#332918] bg-contain bg-no-repeat bg-center flex items-center bg-[url('/lovable-uploads/banner.png')]">
+    <section className="relative h-screen  bg-[#332918] bg-contain bg-no-repeat bg-center flex items-center bg-[url('/lovable-uploads/banner.png')]">
       <div className="absolute inset-0 bg-gradient-to-r from-elo-black/70 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10">
