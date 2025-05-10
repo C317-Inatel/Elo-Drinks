@@ -137,3 +137,7 @@ button {
   padding: 0px;
   box-sizing: border-box;
 }
+
+html {
+  scroll-behavior: smooth;
+}

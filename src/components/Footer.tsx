@@ -4,20 +4,20 @@ import { Phone, Mail, Instagram, Facebook, MapPin, Clock } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-elo-black text-elo-white pt-16 pb-8">
+    <footer id='contato' className="bg-elo-black text-elo-white pt-16 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Coluna 1 - Logo e Descrição */}
           <div className="space-y-4">
             <Link to="/" className="inline-block">
-              <img 
-                src="/lovable-uploads/logo.jpg" 
-                alt="Elo Drinks Logo" 
+              <img
+                src="/lovable-uploads/logo.jpg"
+                alt="Elo Drinks Logo"
                 className="h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-elo-cream/80 text-sm mt-4">
-              Serviço premium de bartenders especialistas para eventos corporativos, 
+              Serviço premium de bartenders especialistas para eventos corporativos,
               casamentos, festas de debutante e ocasiões especiais.
             </p>
           </div>

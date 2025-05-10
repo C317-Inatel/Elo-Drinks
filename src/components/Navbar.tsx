@@ -31,16 +31,16 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-elo-black/90 py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <img 
-            src="/lovable-uploads/logo.jpg" 
-            alt="Elo Drinks Logo" 
+          <img
+            src="/lovable-uploads/logo.jpg"
+            alt="Elo Drinks Logo"
             className="h-16 w-auto object-contain"
           />
         </Link>
 
         {isMobile ? (
-          <button 
-            onClick={toggleMenu} 
+          <button
+            onClick={toggleMenu}
             className="text-elo-white p-2 focus:outline-none"
             aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
           >
@@ -49,12 +49,12 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center space-x-8">
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="/" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Home</Link>
-              <Link to="/sobre" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Sobre</Link>
-              <Link to="/servicos" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Serviços</Link>
-              <Link to="/cardapio" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Cardápio</Link>
-              <Link to="/galeria" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Galeria</Link>
-              <Link to="/contato" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Contato</Link>
+              <a href="#home" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Home</a>
+              <a href="#sobre" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Sobre</a>
+              <a href="#servicos" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Serviços</a>
+              <a href="#cardapio" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Cardápio</a>
+              <a href="#galeria" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Galeria</a>
+              <a href="#contato" className="text-elo-white hover:text-elo-cream transition-colors font-medium">Contato</a>
             </div>
             <Button className="bg-elo-terracotta hover:bg-elo-terracotta/90 text-white">
               <Phone size={16} className="mr-2" />

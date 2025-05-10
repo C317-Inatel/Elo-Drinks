@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const DrinksSection = () => {
   return (
-    <section className="py-20 bg-elo-white">
+    <section id="cardapio" className="py-20 bg-elo-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-elo-black">
@@ -23,7 +23,7 @@ const DrinksSection = () => {
             <TabsTrigger value="classicos" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Clássicos</TabsTrigger>
             <TabsTrigger value="autorais" className="data-[state=active]:bg-elo-terracotta data-[state=active]:text-white">Autorais</TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="especiais">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
@@ -60,9 +60,9 @@ const DrinksSection = () => {
               ].map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={drink.image} 
-                      alt={drink.name} 
+                    <img
+                      src={drink.image}
+                      alt={drink.name}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
@@ -74,7 +74,7 @@ const DrinksSection = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="classicos">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
@@ -101,9 +101,9 @@ const DrinksSection = () => {
               ].map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={drink.image} 
-                      alt={drink.name} 
+                    <img
+                      src={drink.image}
+                      alt={drink.name}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
@@ -115,7 +115,7 @@ const DrinksSection = () => {
               ))}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="autorais">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
@@ -132,9 +132,9 @@ const DrinksSection = () => {
               ].map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={drink.image} 
-                      alt={drink.name} 
+                    <img
+                      src={drink.image}
+                      alt={drink.name}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
