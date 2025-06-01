@@ -3,32 +3,31 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
-permissions:
-  contents: write
+      - master  
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      VITE_SPACE: ${{ secrets.VITE_SPACE }}
-      VITE_ENVIRONMENT: ${{ secrets.VITE_ENVIRONMENT }}
-      VITE_ACESSTOKEN: ${{ secrets.VITE_ACESSTOKEN }}
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install deps
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build
+      - name: Build project
         run: npm run build
+        env:
+          VITE_SPACE: ${{ secrets.VITE_SPACE }}
+          VITE_ENVIRONMENT: ${{ secrets.VITE_ENVIRONMENT }}
+          VITE_ACESSTOKEN: ${{ secrets.VITE_ACESSTOKEN }}
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
