@@ -11,10 +11,11 @@ const DrinksSection = () => {
   const [specialDrinks, setSpecialDrinks] = React.useState([]);
   const [classicDrinks, setClassicDrinks] = React.useState([]);
   const [authorialDrinks, setAuthorialDrinks] = React.useState([]);
+  
   const client = contentful.createClient({
-    space: '',
-    environment: 'master',
-    accessToken: '',
+    space: import.meta.env.VITE_SPACE,
+    environment: import.meta.env.VITE_ENVIRONMENT,
+    accessToken: import.meta.env.VITE_ACESSTOKEN,
   })
 
   React.useEffect(() => {
