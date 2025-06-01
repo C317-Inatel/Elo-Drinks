@@ -1,8 +1,48 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
+import * as contentful from 'contentful'
+import React from "react";
+import { Entry } from "@/models/entry";
 
 const DrinksSection = () => {
+
+  const [drinks, setDrinks] = React.useState([]);
+  const [specialDrinks, setSpecialDrinks] = React.useState([]);
+  const [classicDrinks, setClassicDrinks] = React.useState([]);
+  const [authorialDrinks, setAuthorialDrinks] = React.useState([]);
+  const client = contentful.createClient({
+    space: '',
+    environment: 'master',
+    accessToken: '',
+  })
+
+  React.useEffect(() => {
+    client.getEntries()
+      .then((entry) => {
+        const entries = entry as unknown as Entry;
+        setDrinks(entries.items);
+      })
+      .catch(console.error);
+  }, []);
+
+  React.useEffect(() => {
+    if (drinks.length > 0) {
+      const specialDrinks = drinks.filter(drink => drink.fields.type.toLowerCase().includes('special'));
+      const classicDrinks = drinks.filter(drink => drink.fields.type.toLowerCase().includes('classic'));
+      const authorialDrinks = drinks.filter(drink => drink.fields.type.toLowerCase().includes('authorial'));
+
+      setSpecialDrinks(specialDrinks);
+      setClassicDrinks(classicDrinks);
+      setAuthorialDrinks(authorialDrinks);
+    }
+  }, [drinks]);
+
+  const getImageUrl = (imageId: string): string => {
+    const asset = drinks.find(drink => drink.fields.image?.sys.id === imageId);
+    return asset ? `https:${asset.fields.image.fields.file.url}` : '';
+  }
+
   return (
     <section id="cardapio" className="py-20 bg-elo-white">
       <div className="container mx-auto px-4">
@@ -26,49 +66,18 @@ const DrinksSection = () => {
 
           <TabsContent value="especiais">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Moscow Mule",
-                  description: "Vodka, xarope de gengibre, limão tahiti e espuma de gengibre",
-                  image: "/lovable-uploads/moscow.webp"
-                },
-                {
-                  name: "Aerol Spritz",
-                  description: "Gin, suco de limão siciliano, syrup de manjericão e folhas de manjericão",
-                  image: "/lovable-uploads/aerol.webp"
-                },
-                {
-                  name: "Penicillin",
-                  description: "Whisky, suco de limão siciliano, xarope de gengibre e limão desidratado",
-                  image: "/lovable-uploads/penin.webp"
-                },
-                {
-                  name: "Fitzgerald",
-                  description: "Gin, syrup de açúcar, suco de limão siciliano e angostura bitters",
-                  image: "/lovable-uploads/fitz.webp"
-                },
-                {
-                  name: "Negroni",
-                  description: "Gin, limão siciliano, zimbro e tônica",
-                  image: "/lovable-uploads/negroni.webp"
-                },
-                {
-                  name: "Toranja Tonic",
-                  description: "Whisky, limão siciliano, clara de ovo e angostura",
-                  image: "/lovable-uploads/toranja.webp"
-                }
-              ].map((drink, index) => (
+              {specialDrinks.map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={drink.image}
-                      alt={drink.name}
+                      src={getImageUrl(drink.fields.image.sys.id)}
+                      alt={drink.fields.name}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                   <CardContent className="p-4">
-                    <h3 className="font-bold text-lg text-elo-terracotta mb-2">{drink.name}</h3>
-                    <p className="text-gray-600 text-sm">{drink.description}</p>
+                    <h3 className="font-bold text-lg text-elo-terracotta mb-2">{drink.fields.name}</h3>
+                    <p className="text-gray-600 text-sm">{drink.fields.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -77,39 +86,18 @@ const DrinksSection = () => {
 
           <TabsContent value="classicos">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Expresso Martini",
-                  description: "Vodka, abacaxi fresco, hortelã e açúcar",
-                  image: "/lovable-uploads/martini.webp"
-                },
-                {
-                  name: "Mojito",
-                  description: "Vodka ou cachaça, uvas frescas, manjericão e açúcar",
-                  image: "/lovable-uploads/mojito.webp"
-                },
-                {
-                  name: "Aerol Spritz",
-                  description: "Vodka ou cachaça, kiwi, limão e açúcar",
-                  image: "/lovable-uploads/aerol.webp"
-                },
-                {
-                  name: "Negroni",
-                  description: "Vodka ou cachaça, kiwi, limão e açúcar",
-                  image: "/lovable-uploads/negroni.webp"
-                }
-              ].map((drink, index) => (
+              {classicDrinks.map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={drink.image}
-                      alt={drink.name}
+                      src={getImageUrl(drink.fields.image.sys.id)}
+                      alt={drink.fields.name}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                   <CardContent className="p-4">
-                    <h3 className="font-bold text-lg text-elo-terracotta mb-2">{drink.name}</h3>
-                    <p className="text-gray-600 text-sm">{drink.description}</p>
+                    <h3 className="font-bold text-lg text-elo-terracotta mb-2">{drink.fields.name}</h3>
+                    <p className="text-gray-600 text-sm">{drink.fields.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -118,29 +106,18 @@ const DrinksSection = () => {
 
           <TabsContent value="autorais">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "Vintage Pink",
-                  description: "Curaçau blue, suco de blueberry, amora, mix de limão, água com gás e algodão doce",
-                  image: "/lovable-uploads/vintage.webp"
-                },
-                {
-                  name: "Elo Tonic",
-                  description: "Mix de limão, água com gás e syrup de romã servidos em lâmpadas brilhantes",
-                  image: "/lovable-uploads/elo-tonic.webp"
-                }
-              ].map((drink, index) => (
+              {authorialDrinks.map((drink, index) => (
                 <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                   <div className="h-48 overflow-hidden">
                     <img
-                      src={drink.image}
-                      alt={drink.name}
+                      src={getImageUrl(drink.fields.image.sys.id)}
+                      alt={drink.fields.name}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
                   <CardContent className="p-4">
-                    <h3 className="font-bold text-lg text-elo-terracotta mb-2">{drink.name}</h3>
-                    <p className="text-gray-600 text-sm">{drink.description}</p>
+                    <h3 className="font-bold text-lg text-elo-terracotta mb-2">{drink.fields.name}</h3>
+                    <p className="text-gray-600 text-sm">{drink.fields.description}</p>
                   </CardContent>
                 </Card>
               ))}
