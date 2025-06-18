@@ -2,6 +2,7 @@
   "name": "vite_react_shadcn_ts",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://c317-inatel.github.io/Elo-Drinks/",
   "type": "module",
   "scripts": {
     "dev": "vite",
