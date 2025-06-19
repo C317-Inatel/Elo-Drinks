@@ -5,6 +5,11 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+    define: {
+    'import.meta.env.VITE_SPACE': JSON.stringify(process.env.VITE_SPACE),
+    'import.meta.env.VITE_ENVIRONMENT': JSON.stringify(process.env.VITE_ENVIRONMENT),
+    'import.meta.env.VITE_ACESSTOKEN': JSON.stringify(process.env.VITE_ACESSTOKEN),
+  },
   base: '/Elo-Drinks/',
   server: {
     host: "::",
