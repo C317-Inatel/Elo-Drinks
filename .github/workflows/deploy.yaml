@@ -11,7 +11,17 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_SPACE: ${{ secrets.VITE_SPACE }}
+      VITE_ENVIRONMENT: ${{ secrets.VITE_ENVIRONMENT }}
+      VITE_ACESSTOKEN: ${{ secrets.VITE_ACESSTOKEN }}
     steps:
+      - name: Debug Env Vars
+        run: |
+          echo "VITE_SPACE: $VITE_SPACE"
+          echo "VITE_ENVIRONMENT: $VITE_ENVIRONMENT"
+          echo "VITE_ACESSTOKEN: $VITE_ACESSTOKEN"
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -25,10 +35,6 @@ jobs:
 
       - name: Build project
         run: npm run build
-        env:
-          VITE_SPACE: ${{ secrets.VITE_SPACE }}
-          VITE_ENVIRONMENT: ${{ secrets.VITE_ENVIRONMENT }}
-          VITE_ACESSTOKEN: ${{ secrets.VITE_ACESSTOKEN }}
           
       - name: Build project
         run: ls -la     
