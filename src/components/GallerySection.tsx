@@ -13,12 +13,12 @@ const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   const galleryImages: GalleryImage[] = [
-    { url: "/lovable-uploads/bar.webp", alt: "Bar montado com bartenders" },
-    { url: "/lovable-uploads/aniversario.webp", alt: "Aniversario" },
-    { url: "/lovable-uploads/casamento.webp", alt: "Casamento" },
-    { url: "/lovable-uploads/corp.webp", alt: "Corporativo" },
-    { url: "/lovable-uploads/clinic.webp", alt: "Clínica de Drinks" },
-    { url: "/lovable-uploads/evento-judeu.webp", alt: "Evento Judaico" },
+    { url: "/Elo-Drinks/lovable-uploads/bar.webp", alt: "Bar montado com bartenders" },
+    { url: "/Elo-Drinks/lovable-uploads/aniversario.webp", alt: "Aniversario" },
+    { url: "/Elo-Drinks/lovable-uploads/casamento.webp", alt: "Casamento" },
+    { url: "/Elo-Drinks/lovable-uploads/corp.webp", alt: "Corporativo" },
+    { url: "/Elo-Drinks/lovable-uploads/clinic.webp", alt: "Clínica de Drinks" },
+    { url: "/Elo-Drinks/lovable-uploads/evento-judeu.webp", alt: "Evento Judaico" },
   ];
 
   const openLightbox = (image: GalleryImage) => {

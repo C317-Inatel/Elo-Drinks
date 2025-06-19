@@ -10,7 +10,7 @@ const AboutSection = () => {
           <div className="relative">
             <div className="rounded-lg overflow-hidden shadow-xl">
               <img 
-                src="/lovable-uploads/ceo.webp" 
+                src="/Elo-Drinks/lovable-uploads/ceo.webp" 
                 alt="Equipe Elo Drinks" 
                 className="w-full h-auto object-cover"
               />
