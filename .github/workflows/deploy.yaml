@@ -16,14 +16,14 @@ jobs:
       VITE_ENVIRONMENT: ${{ secrets.VITE_ENVIRONMENT }}
       VITE_ACESSTOKEN: ${{ secrets.VITE_ACESSTOKEN }}
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Debug Env Vars
         run: |
           echo "VITE_SPACE: $VITE_SPACE"
           echo "VITE_ENVIRONMENT: $VITE_ENVIRONMENT"
           echo "VITE_ACESSTOKEN: $VITE_ACESSTOKEN"
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -35,9 +35,9 @@ jobs:
 
       - name: Build project
         run: npm run build
-          
-      - name: Build project
-        run: ls -la     
+
+      - name: List files
+        run: ls -la
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
