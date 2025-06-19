@@ -10,17 +10,15 @@ const DrinksSection = () => {
   const [classicDrinks, setClassicDrinks] = React.useState([]);
   const [authorialDrinks, setAuthorialDrinks] = React.useState([]);
 
-  // const client = contentful.createClient({
-  //   space: import.meta.env.VITE_SPACE,
-  //   environment: import.meta.env.VITE_ENVIRONMENT,
-  //   accessToken: import.meta.env.VITE_ACESSTOKEN,
-  // });
+  console.log("aaa", import.meta.env.VITE_SPACE)
+  console.log("bbb", process.env.VITE_SPACE)
 
   const client = contentful.createClient({
-    space: "0j61atz8cmij",
-    environment: "master",
-    accessToken: "_okSbcfn46diwJXC8TI9tevcxCd2cDb2eOObKe1XI44",
+    space: import.meta.env.VITE_SPACE,
+    environment: import.meta.env.VITE_ENVIRONMENT,
+    accessToken: import.meta.env.VITE_ACESSTOKEN,
   });
+
 
   React.useEffect(() => {
     client
