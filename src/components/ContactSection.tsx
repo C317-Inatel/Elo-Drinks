@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-
+import { API } from '@/configs/axios';
 export default function ContactSection() {
   const drinkOptions = {
     tradicionais: ['Cerveja', 'Gin', 'Vodka', 'Whisky', 'Drinks clássicos'],
@@ -50,7 +50,7 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const today = new Date();
     const day = today.getDate(); 
@@ -67,7 +67,7 @@ export default function ContactSection() {
         <h3 style="color: #c8a95a;">INFORMAÇÕES DA FESTA</h3>
         <p><strong>Nome do solicitante:</strong> ${formData.name}</p>
         <p><strong>Local da Festa:</strong> ${formData.address}</p>
-        <p><strong>E-mail:</strong> ${formData.address}</p>
+        <p><strong>E-mail:</strong> ${formData.email}</p>
         <p><strong>Telefone:</strong> ${formData.phone}</p>
         <p><strong>Tipo de Evento:</strong> ${formData.eventType}</p>
         <p><strong>Carga horária:</strong> ${formData.time}</p>
@@ -144,16 +144,59 @@ export default function ContactSection() {
       jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
     };
 
-    html2pdf()
-    .set(options)
-    .from(pdfContent)
-    .save();
+    const pdfInstance = html2pdf().set(options).from(pdfContent);
 
-    const mensagem = `Olá, segue o orçamento: Nome: ${formData.name}`;
+    await pdfInstance.save();
+
+    const pdfBlob: Blob = await pdfInstance.outputPdf('blob');
+
+    const mensagem = `Olá, gostaria de fazer um orçamento`;
     const link = `https://wa.me/5511973508282?text=${encodeURIComponent(mensagem)}`;
     window.open(link, '_blank');
 
+    const pdfFile = new File([pdfBlob], 'orcamento-evento.pdf', {
+    type: 'application/pdf',
+    });
+
+    const formFile = new FormData();
+    formFile.append('files', pdfFile);
+    formFile.append('folder_id', '0abe5fe1-4039-4ec2-86bd-929fe191528e');
+
+    const guests = parseInt(formData.guests);
+    const totalDrinks =
+      formData.drinks.tradicionais.length +
+      formData.drinks.especiais.length +
+      formData.drinks.softs.length;
+
+    const basePerPerson = 85;
+    const extraPerDrinkType = 5;
+
+    let value = guests * (basePerPerson + totalDrinks * extraPerDrinkType);
+    if (formData.barStructure === 'precisa') {
+      value += 1500
+    }
+
+    try {
+      const { data } = await API.post('/files', formFile, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+       },
+      });
+      await API.post('/leads', 
+        {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          value,
+          file_id: data.data[0].id
+        })
+    } catch (err) {
+      console.error('Erro ao enviar PDF:', err);
+    }
+
   };
+
+
 
   return (
     <section className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow">
