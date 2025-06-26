@@ -110,7 +110,8 @@ export default function ContactSection() {
 
         <h3 style="color: #c8a95a;">INVESTIMENTO</h3>
         <p><strong>Opção 01:</strong> Serviço completo com bebidas alcoólicas (vodka/gin importados)</p>
-        <p><strong>Valor:</strong> R$${value}</p>
+        <p><strong>Valor:</strong> R$${value}</p>\
+        
         <p><em>Valor condicionado à presença de cerveja, espumante e whisky fornecidos pelo cliente.</em></p>
 
         <h4 style="margin-top: 20px; color: #b9975b;">ITENS OPCIONAIS</h4>
