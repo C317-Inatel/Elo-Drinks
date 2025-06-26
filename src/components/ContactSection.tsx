@@ -57,6 +57,20 @@ export default function ContactSection() {
     const month = today.getMonth() + 1;
     const year = today.getFullYear();
 
+        const guests = parseInt(formData.guests);
+    const totalDrinks =
+      formData.drinks.tradicionais.length +
+      formData.drinks.especiais.length +
+      formData.drinks.softs.length;
+
+    const basePerPerson = 85;
+    const extraPerDrinkType = 5;
+
+    let value = guests * (basePerPerson + totalDrinks * extraPerDrinkType);
+    if (formData.barStructure === 'precisa') {
+      value += 1500
+    }
+
     const pdfContent = `<div id="orcamento" style="font-family: 'Arial', sans-serif; padding: 40px; background-color: white; color: #000; max-width: 800px; margin: auto; border: 1px solid #ccc;">
 
         <h2 style="text-align: center; color: #c8a95a; margin-bottom: 10px;">ORÇAMENTO</h2>
@@ -73,6 +87,7 @@ export default function ContactSection() {
         <p><strong>Carga horária:</strong> ${formData.time}</p>
         <p><strong>Data da Festa:</strong> ${formData.date}</p>
         <p><strong>Número de convidados:</strong> ${formData.guests} pessoas</p>
+        <p><strong>Valor:</strong> R$${value} pessoas</p>
 
         <h3 style="color: #c8a95a; margin-top: 30px;">A DOSE CERTA PARA SUA FESTA</h3>
         <ul>
@@ -162,19 +177,7 @@ export default function ContactSection() {
     formFile.append('files', pdfFile);
     formFile.append('folder_id', '0abe5fe1-4039-4ec2-86bd-929fe191528e');
 
-    const guests = parseInt(formData.guests);
-    const totalDrinks =
-      formData.drinks.tradicionais.length +
-      formData.drinks.especiais.length +
-      formData.drinks.softs.length;
 
-    const basePerPerson = 85;
-    const extraPerDrinkType = 5;
-
-    let value = guests * (basePerPerson + totalDrinks * extraPerDrinkType);
-    if (formData.barStructure === 'precisa') {
-      value += 1500
-    }
 
     try {
       const { data } = await API.post('/files', formFile, {
